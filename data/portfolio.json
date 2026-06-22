@@ -1,0 +1,56 @@
+[
+  {
+    "id": "archin-2025",
+    "title": "Archin",
+    "category": "Web Tasarım",
+    "description": "Mimarlık stüdyosu için modern portfolio sitesi ve marka kimliği tasarımı. Minimalist yaklaşım, maksimum etki.",
+    "client": "Archin Studio",
+    "year": "2025",
+    "services": [
+      "Web Tasarım",
+      "Marka Kimliği",
+      "Geliştirme"
+    ],
+    "bunnyLibraryId": "4fdf0506-874e-4db5-855b-d88d33129fe6",
+    "bunnyVideoId": "https://iframe.mediadelivery.net/play/612248/4fdf0506-874e-4db5-855b-d88d33129fe6",
+    "thumbnailUrl": "https://vz-14e8822f-9b5.b-cdn.net/4fdf0506-874e-4db5-855b-d88d33129fe6/thumbnail.jpg",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "vntnr-2018",
+    "title": "VNTNR",
+    "category": "Marka Kimliği",
+    "description": "Girişim için özgün logo tasarımı ve kapsamlı marka kimliği yenileme süreci.",
+    "client": "VNTNR Startup",
+    "year": "2018",
+    "services": [
+      "Logo Tasarım",
+      "Marka Kimliği",
+      "Yenileme"
+    ],
+    "bunnyLibraryId": "BUNNY_LIBRARY_ID_PLACEHOLDER",
+    "bunnyVideoId": "BUNNY_VIDEO_ID_PLACEHOLDER",
+    "thumbnailUrl": "https://framerusercontent.com/images/QhPkJGJBXS8kPS7IhPj7ZBGZpII.png",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "aeorim-2023",
+    "title": "Aeorim",
+    "category": "Revamp",
+    "description": "Teknoloji firması için kapsamlı web sitesi revampı ve kullanıcı deneyimi optimizasyonu.",
+    "client": "Aeorim Tech",
+    "year": "2023",
+    "services": [
+      "Marka Kimliği",
+      "Revamp",
+      "Geliştirme"
+    ],
+    "bunnyLibraryId": "BUNNY_LIBRARY_ID_PLACEHOLDER",
+    "bunnyVideoId": "BUNNY_VIDEO_ID_PLACEHOLDER",
+    "thumbnailUrl": "https://framerusercontent.com/images/yOPV9nZRSJXmNPqyeWfZSThWAc.png",
+    "featured": true,
+    "order": 3
+  }
+]

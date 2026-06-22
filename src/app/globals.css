@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  --color-layout-gray: #dcdcdc;
+  --color-layout-light: #f0f0f0;
+  --color-layout-dark: #0c0c0c;
+  --color-accent-orange: #ff4d00;
+  --color-success-green: #61c554;
+  --color-text-primary: #131313;
+  --color-text-secondary: #5c5c5c;
+  
+  --font-plus-jakarta: var(--font-plus-jakarta-sans);
+  --font-inter: var(--font-inter);
+}
+
+:root {
+  --background: #dcdcdc;
+  --foreground: #131313;
+}
+
+body {
+  background-color: #dcdcdc;
+  color: #131313;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Premium Selection style */
+::selection {
+  background-color: #ff4d00;
+  color: #ffffff;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4d00;
+}
+
+/* Hide default cursor when custom cursor is active */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+/* Smooth scrolling utilities */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Infinite Marquee Animations */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-marquee-container {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-container-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 25s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-container:hover,
+.animate-marquee-container-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Premium Card hover effects */
+.hover-card-trigger {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+}
+
+.hover-card-trigger:hover {
+  transform: translateY(-4px);
+}
+
+.legal-content h2,
+.legal-content h3 {
+  color: #111;
+  font-family: var(--font-plus-jakarta-sans), sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 2rem 0 0.75rem;
+}
+
+.legal-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.legal-content h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.legal-content p,
+.legal-content ul,
+.legal-content ol {
+  margin-bottom: 1rem;
+}
+
+.legal-content ul,
+.legal-content ol {
+  padding-left: 1.25rem;
+}
+
+.legal-content a {
+  color: #ff4d00;
+  font-weight: 700;
+}

@@ -1,0 +1,8 @@
+[2026-05-23 23:47:30] User: Admin | Action: renew_asset_version | Result: Success | Error: New version: 1779569250
+[2026-05-23 23:48:05] User: Admin | Action: clear_app_cache | Result: Not Found | Error: No cache folder exists
+[2026-05-23 23:48:23] User: Admin | Action: clear_opcache | Result: Success | Error: 
+[2026-05-23 23:48:41] User: Admin | Action: litespeed_purge | Result: Success | Error: Purge header sent
+[2026-05-29 15:48:32] User: Admin | Action: clear_app_cache | Result: Not Found | Error: No cache folder exists
+[2026-05-29 15:48:34] User: Admin | Action: clear_opcache | Result: Success | Error: 
+[2026-05-29 15:48:36] User: Admin | Action: renew_asset_version | Result: Success | Error: New version: 1780058916
+[2026-05-29 15:48:38] User: Admin | Action: litespeed_purge | Result: Success | Error: Purge header sent
