@@ -1,3 +1,12 @@
+# BEGIN Passenger
+PassengerEnabled on
+PassengerAppEnv "production"
+PassengerAppRoot "/home/fikircre/fikirsoftware.com"
+PassengerBaseURI "/"
+PassengerAppType node
+PassengerStartupFile "server.js"
+# END Passenger
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
