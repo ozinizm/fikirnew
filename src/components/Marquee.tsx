@@ -120,13 +120,11 @@ export default function Marquee({ brands = [] }: { brands?: CmsBrand[] }) {
     <div className="w-full flex flex-col bg-layout-gray select-none pointer-events-none">
       
       {/* 1. Client Logos Marquee (Faded edges, Infinite horizontal scroll) */}
-      <div 
-        className="w-full py-10 overflow-hidden relative border-t border-black/5 bg-layout-gray"
-        style={{
-          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-          maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-        }}
-      >
+      <div className="w-full py-10 overflow-hidden relative border-t border-black/5 bg-layout-gray">
+        {/* Edge fading overlays using hardware-accelerated background gradients instead of expensive CSS mask-image */}
+        <div className="absolute left-0 top-0 bottom-0 w-[15vw] bg-gradient-to-r from-[#dcdcdc] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-[15vw] bg-gradient-to-l from-[#dcdcdc] to-transparent z-10 pointer-events-none" />
+
         <div 
           className="animate-marquee-container flex items-center gap-24"
           style={{ animationDuration: "35s" }}

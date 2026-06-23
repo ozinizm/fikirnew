@@ -83,17 +83,13 @@ export default function StatsGrid({
       <div className="absolute top-[8%] sm:top-[6%] left-0 w-full overflow-hidden pointer-events-none select-none z-0">
         <motion.div
           style={{ x }}
-          className="w-[140%] -ml-[20%] text-center whitespace-nowrap"
+          className="w-[140%] -ml-[20%] text-center whitespace-nowrap relative"
         >
-          <span 
-            className="font-plus-jakarta text-[16vw] font-black tracking-tighter leading-none block text-[#1c1c1e]/[0.08]"
-            style={{
-              WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%)",
-              maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%)",
-            }}
-          >
+          <span className="font-plus-jakarta text-[16vw] font-black tracking-tighter leading-none block text-[#1c1c1e]/[0.08]">
             Dönüşüm
           </span>
+          {/* Overlay to fade out the text vertically without performance-heavy mask-image */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#dcdcdc] pointer-events-none" />
         </motion.div>
       </div>
 

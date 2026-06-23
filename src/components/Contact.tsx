@@ -76,16 +76,12 @@ export default function Contact() {
     >
       
       {/* 1. Large background text "iletisime gec" */}
-      <div className="absolute top-16 left-1/2 -translate-x-1/2 select-none pointer-events-none z-0">
-        <h2 
-          className="font-plus-jakarta text-[12vw] font-black text-black/[0.15] tracking-tighter text-center leading-none whitespace-nowrap blur-[6px]"
-          style={{
-            WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
-            maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)",
-          }}
-        >
+      <div className="absolute top-16 left-1/2 -translate-x-1/2 select-none pointer-events-none z-0 relative">
+        <h2 className="font-plus-jakarta text-[12vw] font-black text-black/[0.15] tracking-tighter text-center leading-none whitespace-nowrap blur-[6px]">
           İletişime geç
         </h2>
+        {/* Hardware-accelerated fade gradient overlay instead of expensive CSS mask-image */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#dcdcdc] pointer-events-none" />
       </div>
 
       {/* 2. Premium Card Container */}
@@ -193,13 +189,10 @@ export default function Contact() {
         </div>
 
         {/* 3. Bottom Scrolling Marquee inside the card */}
-        <div 
-          className="w-full py-4 border-t border-white/5 overflow-hidden bg-black/40 relative z-20"
-          style={{
-            WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-            maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-          }}
-        >
+        <div className="w-full py-4 border-t border-white/5 overflow-hidden bg-black/40 relative z-20">
+          {/* Hardware-accelerated edge fades instead of expensive CSS mask-image */}
+          <div className="absolute left-0 top-0 bottom-0 w-[15%] bg-gradient-to-r from-[#0c0c0e] to-transparent z-30 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-[15%] bg-gradient-to-l from-[#0c0c0e] to-transparent z-30 pointer-events-none" />
           <div 
             className="animate-marquee-container flex items-center gap-16 whitespace-nowrap"
             style={{ animationDuration: "35s" }}

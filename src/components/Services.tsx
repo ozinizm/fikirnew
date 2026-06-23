@@ -104,14 +104,12 @@ export default function Services() {
         {/* Mockup Card & Background Scrolling Marquee Container */}
         <div className="relative w-full flex items-center justify-center my-16 select-none min-h-[300px]">
           
-          {/* Background Scrolling Marquee with Edge Fading Blur (Stretched to screen edges) */}
-          <div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-hidden pointer-events-none select-none z-0"
-            style={{
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-              maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-            }}
-          >
+          {/* Background Scrolling Marquee with Edge Fading (Stretched to screen edges) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-hidden pointer-events-none select-none z-0">
+            {/* Edge fading overlays using hardware-accelerated background gradients instead of expensive CSS mask-image */}
+            <div className="absolute left-0 top-0 bottom-0 w-[20vw] bg-gradient-to-r from-[#dcdcdc] to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-[20vw] bg-gradient-to-l from-[#dcdcdc] to-transparent z-10" />
+
             <div 
               className="animate-marquee-container flex items-center whitespace-nowrap gap-16"
               style={{ animationDuration: "120s" }}
