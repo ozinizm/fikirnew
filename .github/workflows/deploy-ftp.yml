@@ -21,6 +21,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           server-dir: ./
+          state-name: .ftp-deploy-sync-state-fikirnew.json
           exclude: |
             **/.git*
             **/.git*/**
