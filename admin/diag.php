@@ -6,12 +6,29 @@ echo "<h3>Environment Diagnostics</h3>";
 echo "Current PHP Version: " . phpversion() . "<br>";
 echo "Current Directory: " . __DIR__ . "<br>";
 
-$env_file = __DIR__ . '/../.env.local';
+$root_dir = dirname(__DIR__);
+echo "Root Directory: " . $root_dir . "<br>";
+
+// 1. Check debug file
+$debug_file = $root_dir . '/tmp/env_keys_debug.txt';
+if (file_exists($debug_file)) {
+    echo "<b>env_keys_debug.txt found:</b><br><pre>" . htmlspecialchars(file_get_contents($debug_file)) . "</pre><br>";
+} else {
+    echo "env_keys_debug.txt does NOT exist in tmp folder.<br>";
+}
+
+// 2. Check for .env files in root
+echo "<b>Listing all .env* files in root:</b><br>";
+foreach (glob($root_dir . '/.env*') as $filename) {
+    echo "- " . basename($filename) . " (" . filesize($filename) . " bytes)<br>";
+}
+echo "<br>";
+
+$env_file = $root_dir . '/.env.local';
 echo "Checking .env.local file: " . ($env_file) . "<br>";
 if (file_exists($env_file)) {
     echo ".env.local exists. Size: " . filesize($env_file) . " bytes<br>";
     $lines = file($env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    echo "Number of lines: " . count($lines) . "<br>";
     foreach ($lines as $line) {
         $line = trim($line);
         if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) {
@@ -21,7 +38,7 @@ if (file_exists($env_file)) {
         echo "Key found: " . htmlspecialchars($key) . " (value length: " . strlen($value) . ")<br>";
     }
 } else {
-    echo ".env.local does NOT exist in parent directory!<br>";
+    echo ".env.local does NOT exist in root directory!<br>";
 }
 
 echo "<h3>Testing Database Connection</h3>";
