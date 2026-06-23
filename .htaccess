@@ -1,19 +1,6 @@
-# BEGIN Passenger
-PassengerEnabled on
-PassengerAppEnv "production"
-PassengerAppRoot "/home/fikircre/fikirsoftware.com"
-PassengerBaseURI "/"
-PassengerAppType node
-PassengerStartupFile "server.js"
-# END Passenger
-
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
-
-    # Force HTTPS Redirect
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # 1. Serve PHP paths directly (do not route to Next.js/Node.js)
     RewriteRule ^(admin|api|uploads|brand)($|/) - [L]
