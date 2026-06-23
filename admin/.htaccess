@@ -1,0 +1,18 @@
+<IfModule mod_passenger.c>
+    PassengerEnabled off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /admin/
+
+    # 1. Redirect direct GET requests for .php files to their clean URL equivalent
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /admin/([^/]+)\.php\ HTTP/
+    RewriteRule ^([^/]+)\.php$ $1 [R=301,L]
+
+    # 2. Internally rewrite clean URLs back to their .php files if they exist
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([^/]+)$ $1.php [L]
+</IfModule>

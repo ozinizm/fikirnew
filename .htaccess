@@ -2,6 +2,10 @@
     RewriteEngine On
     RewriteBase /
 
+    # Force HTTPS Redirect
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
     # 1. Serve PHP paths directly (do not route to Next.js/Node.js)
     RewriteRule ^(admin|api|uploads|brand)($|/) - [L]
 
