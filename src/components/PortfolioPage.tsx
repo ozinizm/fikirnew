@@ -280,115 +280,121 @@ export default function PortfolioPage() {
       : items.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#0c0c0c] text-white">
-
-      {/* ─── Hero ─── */}
-      <section className="relative pt-40 pb-20 px-6 md:px-12 overflow-hidden">
+    <div className="min-h-screen text-white pt-32 pb-0">
+      
+      {/* Centered Portfolio Card matching the footer shape, size and styling */}
+      <div className="relative w-[calc(100%-32px)] md:w-[calc(100%-48px)] mx-auto max-w-[1920px] rounded-[32px] bg-[#0c0c0e] border border-white/5 shadow-2xl mb-4 overflow-hidden">
+        
+        {/* Background glow effects inside the card */}
         <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
           <div className="absolute top-0 left-1/4 w-[50vw] h-[50vw] rounded-full bg-[#f97316]/5 blur-[140px]" />
           <div className="absolute bottom-0 right-1/4 w-[40vw] h-[40vw] rounded-full bg-[#f97316]/3 blur-[120px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="font-plus-jakarta text-[11px] font-bold uppercase tracking-[0.25em] text-neutral-500 block mb-5">
-              ( Seçili Çalışmalar )
-            </span>
-            <h1 className="font-plus-jakarta text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[0.95] mb-6">
-              Portfolyo
-            </h1>
-            <p className="font-inter text-lg text-neutral-400 max-w-xl leading-relaxed">
-              Yerel işletmeler için ürettiğimiz dijital büyüme sistemleri, web
-              tasarımları ve marka kimlikleri.
-            </p>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap gap-10 mt-12 border-t border-white/8 pt-10"
-          >
-            {[
-              { value: "40+", label: "Tamamlanan Proje" },
-              { value: "4 Yıl", label: "Sektör Deneyimi" },
-              { value: "%93", label: "Müşteri Memnuniyeti" },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col gap-1">
-                <span className="font-plus-jakarta text-3xl font-extrabold text-white">
-                  {stat.value}
-                </span>
-                <span className="font-inter text-xs text-neutral-500">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ─── Filter Bar ─── */}
-      <section className="px-6 md:px-12 pb-10">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap items-center gap-2"
-          >
-            <Filter size={14} className="text-neutral-600 mr-1" />
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`font-inter text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-300 ${
-                  activeCategory === cat
-                    ? "bg-white text-black border-white"
-                    : "bg-white/5 text-neutral-400 border-white/10 hover:border-white/20 hover:text-white"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ─── Grid ─── */}
-      <section className="px-6 md:px-12 pb-32">
-        <div className="max-w-7xl mx-auto">
-          <AnimatePresence mode="wait">
+        {/* ─── Hero ─── */}
+        <section className="relative pt-16 pb-10 px-6 md:px-12">
+          <div className="max-w-6xl mx-auto">
             <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              {filtered.map((item, index) => (
-                <PortfolioCard
-                  key={item.id}
-                  item={item}
-                  index={index}
-                  onPlay={(item) => setActiveVideo(item)}
-                />
+              <span className="font-plus-jakarta text-[11px] font-bold uppercase tracking-[0.25em] text-neutral-500 block mb-5">
+                ( Seçili Çalışmalar )
+              </span>
+              <h1 className="font-plus-jakarta text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[0.95] mb-6">
+                Portfolyo
+              </h1>
+              <p className="font-inter text-base text-neutral-400 max-w-xl leading-relaxed">
+                Yerel işletmeler için ürettiğimiz dijital büyüme sistemleri, web
+                tasarımları ve marka kimlikleri.
+              </p>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap gap-10 mt-10 border-t border-white/8 pt-8"
+            >
+              {[
+                { value: "40+", label: "Tamamlanan Proje" },
+                { value: "4 Yıl", label: "Sektör Deneyimi" },
+                { value: "%93", label: "Müşteri Memnuniyeti" },
+              ].map((stat) => (
+                <div key={stat.label} className="flex flex-col gap-1">
+                  <span className="font-plus-jakarta text-2xl sm:text-3xl font-extrabold text-white">
+                    {stat.value}
+                  </span>
+                  <span className="font-inter text-[10px] sm:text-xs text-neutral-500">
+                    {stat.label}
+                  </span>
+                </div>
               ))}
             </motion.div>
-          </AnimatePresence>
+          </div>
+        </section>
 
-          {filtered.length === 0 && (
-            <div className="text-center py-24 text-neutral-600 font-inter text-sm">
-              Bu kategoride henüz proje yok.
-            </div>
-          )}
-        </div>
-      </section>
+        {/* ─── Filter Bar ─── */}
+        <section className="px-6 md:px-12 pb-8">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-wrap items-center gap-2"
+            >
+              <Filter size={14} className="text-neutral-600 mr-1" />
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`font-inter text-xs font-semibold px-4 py-2 rounded-full border transition-all duration-300 ${
+                    activeCategory === cat
+                      ? "bg-white text-black border-white"
+                      : "bg-white/5 text-neutral-400 border-white/10 hover:border-white/20 hover:text-white"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ─── Grid ─── */}
+        <section className="px-6 md:px-12 pb-24">
+          <div className="max-w-6xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+              >
+                {filtered.map((item, index) => (
+                  <PortfolioCard
+                    key={item.id}
+                    item={item}
+                    index={index}
+                    onPlay={(item) => setActiveVideo(item)}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {filtered.length === 0 && (
+              <div className="text-center py-20 text-neutral-600 font-inter text-sm">
+                Bu kategoride henüz proje yok.
+              </div>
+            )}
+          </div>
+        </section>
+
+      </div>
 
       {/* ─── Video Modal ─── */}
       <AnimatePresence>
