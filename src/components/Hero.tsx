@@ -34,18 +34,14 @@ const AnimatedText = ({ text, className }: { text: string; className?: string })
   return (
     <span className={className}>
       {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-block whitespace-nowrap">
-          {word.split("").map((char, charIndex) => (
-            <motion.span
-              key={charIndex}
-              variants={wordVariants}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          ))}
+        <motion.span
+          key={wordIndex}
+          variants={wordVariants}
+          className="inline-block"
+        >
+          {word}
           {wordIndex < words.length - 1 && "\u00A0"}
-        </span>
+        </motion.span>
       ))}
     </span>
   );
@@ -96,11 +92,12 @@ export default function Hero({ settings = {} }: { settings?: Record<string, stri
           <span className="text-[13px] text-text-secondary font-inter font-medium tracking-wide">Markalar tarafından güvenilen.</span>
         </motion.div>
         
-        <h1 className="font-plus-jakarta text-[6.5vw] xs:text-4xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[72px] font-extrabold tracking-[-0.03em] leading-[1.2] text-text-primary mb-8 flex flex-col gap-y-2 md:gap-y-3">
+        {/* Desktop Title (Structured Flex Layout) */}
+        <h1 className="hidden lg:flex flex-col gap-y-3 font-plus-jakarta text-[64px] xl:text-[72px] font-extrabold tracking-[-0.03em] leading-[1.2] text-text-primary mb-8">
           {/* Satır 1 */}
-          <div className="flex flex-wrap md:flex-nowrap items-center justify-center gap-x-2 sm:gap-x-3">
+          <div className="flex items-center justify-center gap-x-3">
             <AnimatedText text={line1Left} />
-            <motion.div variants={wordVariants} className="inline-block flex-shrink-0 w-14 h-8 xs:w-20 xs:h-12 md:w-28 md:h-16 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm">
+            <motion.div variants={wordVariants} className="inline-block flex-shrink-0 w-28 h-16 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm">
               <img src={inlineImage1} alt="Fikir Creative Web Tasarım Örneği" className="w-full h-full object-cover" />
             </motion.div>
             <AnimatedText text={line1Right.split(" ")[0]} className="text-accent-orange" />
@@ -108,27 +105,50 @@ export default function Hero({ settings = {} }: { settings?: Record<string, stri
               <AnimatedText text={line1Right.split(" ").slice(1).join(" ")} className="text-text-secondary/50" />
             )}
           </div>
- 
+  
           {/* Satır 2 */}
-          <div className="flex flex-wrap md:flex-nowrap items-center justify-center gap-x-2 sm:gap-x-3">
+          <div className="flex items-center justify-center gap-x-3">
             <AnimatedText text={line2Left} />
-            <motion.div variants={wordVariants} className="inline-block flex-shrink-0 w-10 h-10 sm:w-16 sm:h-16 md:w-24 md:h-24 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm">
+            <motion.div variants={wordVariants} className="inline-block flex-shrink-0 w-24 h-24 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm">
               <img src={inlineImage2} alt="Reklam Performans Raporu" className="w-full h-full object-cover" />
             </motion.div>
             <AnimatedText text={line2Right} />
           </div>
- 
+  
           {/* Satır 3 */}
-          <div className="flex flex-wrap md:flex-nowrap items-center justify-center gap-x-2 sm:gap-x-3">
+          <div className="flex items-center justify-center gap-x-3">
             <AnimatedText text={line3Left} className="text-text-secondary/50" />
             <AnimatedText text={brandFirst} className="text-accent-orange" />
-            <motion.div variants={wordVariants} className="inline-block flex-shrink-0 w-10 h-10 sm:w-16 sm:h-16 md:w-24 md:h-24 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm">
+            <motion.div variants={wordVariants} className="inline-block flex-shrink-0 w-24 h-24 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm">
               <img src={inlineImage3} alt="Dijital Büyüme Analiz Grafiği" className="w-full h-full object-cover" />
             </motion.div>
             <AnimatedText text={brandSecond} className="text-accent-orange" />
           </div>
         </h1>
- 
+
+        {/* Mobile/Tablet Title (Naturally Flowing Paragraph Layout) */}
+        <h1 className="block lg:hidden font-plus-jakarta text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[-0.03em] leading-[1.3] text-text-primary mb-8 px-2 max-w-xl mx-auto">
+          <AnimatedText text={line1Left} />{" "}
+          <motion.div variants={wordVariants} className="inline-block align-middle w-12 h-7 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm mx-1">
+            <img src={inlineImage1} alt="Fikir Creative Web Tasarım Örneği" className="w-full h-full object-cover" />
+          </motion.div>{" "}
+          <AnimatedText text={line1Right.split(" ")[0]} className="text-accent-orange" />{" "}
+          {line1Right.split(" ").slice(1).join(" ") && (
+            <AnimatedText text={line1Right.split(" ").slice(1).join(" ")} className="text-text-secondary/50" />
+          )}{" "}
+          <AnimatedText text={line2Left} />{" "}
+          <motion.div variants={wordVariants} className="inline-block align-middle w-9 h-9 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm mx-1">
+            <img src={inlineImage2} alt="Reklam Performans Raporu" className="w-full h-full object-cover" />
+          </motion.div>{" "}
+          <AnimatedText text={line2Right} />{" "}
+          <AnimatedText text={line3Left} className="text-text-secondary/50" />{" "}
+          <AnimatedText text={brandFirst} className="text-accent-orange" />{" "}
+          <motion.div variants={wordVariants} className="inline-block align-middle w-9 h-9 bg-[#eee] rounded-full overflow-hidden border border-black/5 shadow-sm mx-1">
+            <img src={inlineImage3} alt="Dijital Büyüme Analiz Grafiği" className="w-full h-full object-cover" />
+          </motion.div>{" "}
+          <AnimatedText text={brandSecond} className="text-accent-orange" />
+        </h1>
+
         <motion.p variants={wordVariants} className="max-w-2xl text-base md:text-lg text-text-secondary font-inter leading-relaxed mb-12">
           <AnimatedText text={slogan} />
         </motion.p>

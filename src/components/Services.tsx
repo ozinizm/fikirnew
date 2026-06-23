@@ -82,14 +82,17 @@ export default function Services() {
           <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-black/10 -translate-y-1/2 z-0 hidden sm:block" />
           
           {/* Spaced out tab links */}
-          <div className="relative z-10 flex flex-col sm:flex-row justify-between items-center w-full gap-4 sm:gap-0 px-2 sm:px-8">
+          <div 
+            className="relative z-10 flex flex-row overflow-x-auto no-scrollbar justify-start sm:justify-between items-center w-full gap-4 sm:gap-0 px-4 sm:px-8 py-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {services.map((service, index) => {
               const isActive = activeTab === index;
               return (
                 <button
                   key={index}
                   onClick={() => setActiveTab(index)}
-                  className={`font-inter text-xs sm:text-sm font-semibold transition-all duration-300 bg-layout-gray px-4 py-2 flex items-center gap-2 clickable rounded-full sm:rounded-none border sm:border-0 border-black/5 sm:border-transparent ${
+                  className={`font-inter text-xs sm:text-sm font-semibold transition-all duration-300 bg-layout-gray px-4 py-2 flex items-center gap-2 clickable rounded-full sm:rounded-none border sm:border-0 border-black/5 sm:border-transparent shrink-0 ${
                     isActive ? "text-accent-orange font-extrabold" : "text-neutral-500 hover:text-[#1c1c1e]"
                   }`}
                 >

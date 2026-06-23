@@ -29,20 +29,47 @@ export default function Manifesto() {
 
       const spans = text.querySelectorAll(".manifesto-word");
 
-      // Pin the section and animate opacity of words on scroll
-      gsap.to(spans, {
-        opacity: 1,
-        stagger: 0.1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=100% top",
-          scrub: 0.8,
-          pin: true,
-          anticipatePin: 1,
-        },
+      let mm = gsap.matchMedia();
+
+      // Desktop: Pin and scrub scroll reveal
+      mm.add("(min-width: 1024px)", () => {
+        gsap.to(spans, {
+          opacity: 1,
+          stagger: 0.1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "+=100% top",
+            scrub: 0.8,
+            pin: true,
+            anticipatePin: 1,
+          },
+        });
       });
+
+      // Mobile/Tablet: standard scroll reveal without pinning (which causes scroll issues and cutoffs)
+      mm.add("(max-width: 1023px)", () => {
+        gsap.to(spans, {
+          opacity: 1,
+          stagger: 0.04,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+
+      return () => {
+        mm.revert();
+        ScrollTrigger.getAll().forEach((t) => {
+          if (t.trigger === containerRef.current) {
+            t.kill();
+          }
+        });
+      };
     },
     { scope: containerRef }
   );
@@ -51,7 +78,7 @@ export default function Manifesto() {
     <div
       ref={containerRef}
       id="manifesto"
-      className="relative h-screen w-full flex items-center justify-center bg-[#F8F9FA] px-6 md:px-12 overflow-hidden border-b border-black/5"
+      className="relative min-h-[60vh] lg:h-screen w-full flex items-center justify-center bg-[#F8F9FA] px-6 md:px-12 py-16 lg:py-0 overflow-hidden border-b border-black/5"
     >
       {/* Background radial highlight */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
